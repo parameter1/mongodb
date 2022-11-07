@@ -1,6 +1,6 @@
 {
   "name": "@parameter1/mongodb-pagination",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "type": "module",
   "description": "Cursor, offset, and embedded object pagination for MongoDB queries.",
   "author": "Jacob Bare <jacob@parameter1.com>",
