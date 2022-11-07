@@ -35,7 +35,7 @@
     "sift": "^16.0.1"
   },
   "peerDependencies": {
-    "@parameter1/mongodb-core": "^0.0.0"
+    "@parameter1/mongodb-core": "^1.0.0"
   },
   "devDependencies": {
     "@parameter1/mongodb-core": "^1.0.0"
