@@ -1,6 +1,6 @@
 import orderBy from 'lodash.orderby';
 import { sluggify } from '@parameter1/slug';
-import Joi, { attempt } from 'joi';
+import Joi from 'joi';
 import { get } from '@parameter1/object-path';
 import { isFunction as isFn } from '@parameter1/utils';
 import sift from 'sift';
@@ -32,7 +32,7 @@ import hasNextPage from './with-objects/has-next-page.js';
  * @param {FindWithObjectsParams} params
  */
 export async function findWithObjects(docs, params) {
-  attempt(docs, Joi.alternatives().try(
+  Joi.attempt(docs, Joi.alternatives().try(
     Joi.array().items(Joi.object()),
     Joi.func(),
   ));
@@ -43,7 +43,7 @@ export async function findWithObjects(docs, params) {
     limit,
     cursor,
     direction,
-  } = attempt(params, Joi.object({
+  } = Joi.attempt(params, Joi.object({
     idPath: Joi.string().trim().default('node._id'),
     query: props.query,
     sort: Joi.array().items(

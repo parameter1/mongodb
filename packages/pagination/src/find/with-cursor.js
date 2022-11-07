@@ -1,4 +1,3 @@
-// import { attempt, PropTypes, validateAsync } from '@mindful-cms/prop-types';
 import { EJSON } from '@parameter1/mongodb-bson';
 import Joi from 'joi';
 import { mongoCollectionProp } from '@parameter1/mongodb-prop-types';
