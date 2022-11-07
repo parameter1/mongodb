@@ -1,4 +1,4 @@
-# BSON
+# MongoDB BSON
 A BSON wrapper containing common utilities.
 
 ## Installation
