@@ -1,0 +1,33 @@
+{
+  "name": "@parameter1/mongodb-core",
+  "version": "0.0.0",
+  "type": "module",
+  "description": "A core MongoDB wrapper containing common utilities.",
+  "author": "Jacob Bare <jacob@parameter1.com>",
+  "homepage": "https://github.com/parameter1/mongodb/tree/main/packages/core#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/parameter1/mongodb.git",
+    "directory": "packages/core"
+  },
+  "license": "MIT",
+  "main": "./src/index.js",
+  "scripts": {
+    "lint": "eslint --ext .js ./",
+    "test": "yarn lint"
+  },
+  "engines": {
+    "node": ">=14.0"
+  },
+  "os": [
+    "darwin",
+    "linux",
+    "win32"
+  ],
+  "dependencies": {
+    "mongodb": "^4.11.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
