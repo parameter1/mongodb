@@ -1,5 +1,5 @@
 # MongoDB GraphQL Types
-MongoDB GraphQL scalar types.
+MongoDB GraphQL scalar types, such as `ObjectId`
 
 ## Installation
 ```
