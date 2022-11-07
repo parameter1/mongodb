@@ -1,0 +1,39 @@
+{
+  "name": "@parameter1/mongodb-graphql-types",
+  "version": "0.0.0",
+  "type": "module",
+  "description": "MongoDB GraphQL scalar types.",
+  "author": "Jacob Bare <jacob@parameter1.com>",
+  "homepage": "https://github.com/parameter1/mongodb/tree/main/packages/graphql-types#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/parameter1/mongodb.git",
+    "directory": "packages/graphql-types"
+  },
+  "license": "MIT",
+  "main": "./src/index.js",
+  "scripts": {
+    "lint": "eslint --ext .js ./",
+    "test": "yarn lint"
+  },
+  "engines": {
+    "node": ">=14.0"
+  },
+  "os": [
+    "darwin",
+    "linux",
+    "win32"
+  ],
+  "dependencies": {
+    "@parameter1/mongodb-bson": "^0.0.0"
+  },
+  "peerDependencies": {
+    "graphql": "^15.0.0 || ^16.0.0"
+  },
+  "devDependencies": {
+    "graphql": "^16.6.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
