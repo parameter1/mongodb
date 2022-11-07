@@ -1,0 +1,33 @@
+{
+  "name": "@parameter1/mongodb-bson",
+  "version": "0.0.0",
+  "type": "module",
+  "description": "A BSON wrapper containing common utilities.",
+  "author": "Jacob Bare <jacob@parameter1.com>",
+  "homepage": "https://github.com/parameter1/mongodb/tree/main/packages/bson#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/parameter1/mongodb.git",
+    "directory": "packages/bson"
+  },
+  "license": "MIT",
+  "main": "./src/index.js",
+  "scripts": {
+    "lint": "eslint --ext .js ./",
+    "test": "yarn lint"
+  },
+  "engines": {
+    "node": ">=14.0"
+  },
+  "os": [
+    "darwin",
+    "linux",
+    "win32"
+  ],
+  "dependencies": {
+    "bson": "^4.7.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
