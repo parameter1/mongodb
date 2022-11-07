@@ -7,8 +7,8 @@ import { reduceKeys } from './utils/reduce-keys.js';
 
 export class MongoDBDataLoader {
   /**
-   * @typedef {import("mongodb").Collection} Collection
-   * @typedef {import("mongodb").Document} Document
+   * @typedef {import("@parameter1/mongodb-core").Collection} Collection
+   * @typedef {import("@parameter1/mongodb-core").Document} Document
    *
    * @typedef ConstructorParams
    * @prop {string} name The dataloader name
