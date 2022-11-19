@@ -113,6 +113,56 @@ export class MongoDBDataLoader {
   }
 
   /**
+   * Primes a single document
+   *
+   * @typedef PrimeParams
+   * @prop {string} [foreignField=_id] The foreign field to prime. Defaults to `_id`
+   * @prop {Document} [projection] The document projection object (e.g. the fields to return)
+   * @prop {Document} document The document to prime
+   *
+   * @param {PrimeParams} params
+   * @returns {MongoDBDataLoader}
+   */
+  prime({
+    foreignField = '_id',
+    document,
+    projection,
+  }) {
+    const { fields } = MongoDBDataLoader.prepare({ foreignField, projection });
+    const id = get(document, foreignField);
+    if (id == null) throw new Error('Unable to retrieve an ID value');
+    const key = {
+      foreignField,
+      value: id,
+      fields,
+    };
+    this.loader.prime(key, document);
+    return this;
+  }
+
+  /**
+   * Primes many documents
+   *
+   * @typedef PrimeManuParams
+   * @prop {string} [foreignField=_id] The foreign field to prime. Defaults to `_id`
+   * @prop {Document} [projection] The document projection object (e.g. the fields to return)
+   * @prop {Document[]} documents The documents to prime
+   *
+   * @param {PrimeManuParams} params
+   * @returns {MongoDBDataLoader}
+   */
+  primeMany({
+    foreignField = '_id',
+    documents,
+    projection,
+  }) {
+    documents.forEach((document) => {
+      this.prime({ foreignField, document, projection });
+    });
+    return this;
+  }
+
+  /**
    * @private
    * @param {array} keys
    */
