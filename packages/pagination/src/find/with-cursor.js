@@ -51,8 +51,9 @@ const executeQuery = async (collection, {
   return { hasMoreResults, results };
 };
 
-const buildEdges = async ({ runQuery, formatEdgeFn }) => {
+const buildEdges = async ({ runQuery, formatEdgeFn, onLoadEdgesFn }) => {
   const { results } = await runQuery();
+  if (typeof onLoadEdgesFn === 'function') onLoadEdgesFn(results);
   const formatter = typeof formatEdgeFn === 'function' ? formatEdgeFn : (edge) => edge;
   return results.map((node) => (formatter({
     node,
@@ -69,6 +70,7 @@ const buildEdges = async ({ runQuery, formatEdgeFn }) => {
  * @prop {string} [direction=AFTER]
  * @prop {Document} [projection]
  * @prop {function} [formatEdgeFn]
+ * @prop {function} [onLoadEdgesFn]
  *
  * @typedef FindWithCursorParamsSort
  * @prop {string} [field=_id]
@@ -88,6 +90,7 @@ export async function findWithCursor(collection, params) {
     direction,
     projection,
     formatEdgeFn,
+    onLoadEdgesFn,
   } = Joi.attempt(params, Joi.object({
     query: props.query,
     sort: props.sort,
@@ -96,6 +99,7 @@ export async function findWithCursor(collection, params) {
     direction: props.cursorDirection,
     projection: props.projection,
     formatEdgeFn: Joi.func(),
+    onLoadEdgesFn: Joi.func(),
   }).default());
 
   const queryOptions = prepareQueryOptions({
@@ -139,7 +143,7 @@ export async function findWithCursor(collection, params) {
   return {
     // use the base query, not the cursor query, to count all docs
     totalCount: () => collection.countDocuments(query),
-    edges: () => buildEdges({ runQuery, formatEdgeFn }),
+    edges: () => buildEdges({ runQuery, formatEdgeFn, onLoadEdgesFn }),
     pageInfo: {
       hasNextPage: async () => {
         if (direction === 'AFTER') {
