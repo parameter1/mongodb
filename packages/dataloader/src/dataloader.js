@@ -143,12 +143,12 @@ export class MongoDBDataLoader {
   /**
    * Primes many documents
    *
-   * @typedef PrimeManuParams
+   * @typedef PrimeManyParams
    * @prop {string} [foreignField=_id] The foreign field to prime. Defaults to `_id`
    * @prop {Document} [projection] The document projection object (e.g. the fields to return)
    * @prop {Document[]} documents The documents to prime
    *
-   * @param {PrimeManuParams} params
+   * @param {PrimeManyParams} params
    * @returns {MongoDBDataLoader}
    */
   primeMany({
