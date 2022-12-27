@@ -17,6 +17,7 @@ const prepareQueryOptions = ({
   sort,
   limit,
   projection,
+  ...rest
 } = {}) => {
   const $sort = {
     [sort.field]: sort.order,
@@ -27,6 +28,7 @@ const prepareQueryOptions = ({
     sort: direction === 'BEFORE' ? invertSort($sort) : $sort,
     limit: limit + 1, // peek for another record
     projection: { ...projection, _id: 1 },
+    ...rest,
   };
 };
 
@@ -71,6 +73,7 @@ const buildEdges = async ({ runQuery, formatEdgeFn, onLoadEdgesFn }) => {
  * @prop {Document} [projection]
  * @prop {function} [formatEdgeFn]
  * @prop {function} [onLoadEdgesFn]
+ * @prop {object} [additionalOptions]
  *
  * @typedef FindWithCursorParamsSort
  * @prop {string} [field=_id]
@@ -91,6 +94,7 @@ export async function findWithCursor(collection, params) {
     projection,
     formatEdgeFn,
     onLoadEdgesFn,
+    additionalOptions,
   } = Joi.attempt(params, Joi.object({
     query: props.query,
     sort: props.sort,
@@ -100,6 +104,7 @@ export async function findWithCursor(collection, params) {
     projection: props.projection,
     formatEdgeFn: Joi.func(),
     onLoadEdgesFn: Joi.func(),
+    additionalOptions: Joi.object(),
   }).default());
 
   const queryOptions = prepareQueryOptions({
@@ -107,6 +112,7 @@ export async function findWithCursor(collection, params) {
     sort,
     limit,
     projection,
+    ...additionalOptions,
   });
 
   // build the query criteria when a cursor value is present.

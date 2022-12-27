@@ -12,6 +12,7 @@ import props from '../props.js';
  * @prop {import("mongodb").Document} [projection]
  * @prop {function} [formatEdgeFn]
  * @prop {function} [onLoadEdgesFn]
+ * @prop {object} [additionalOptions]
  *
  * @typedef FindWithOffsetParamsSort
  * @prop {string} [field=_id]
@@ -31,6 +32,7 @@ export async function findWithOffset(collection, params) {
     projection,
     formatEdgeFn,
     onLoadEdgesFn,
+    additionalOptions,
   } = Joi.attempt(params, Joi.object({
     query: props.query,
     sort: props.sort,
@@ -39,6 +41,7 @@ export async function findWithOffset(collection, params) {
     projection: props.projection,
     formatEdgeFn: Joi.func(),
     onLoadEdgesFn: Joi.func(),
+    additionalOptions: Joi.object(),
   }).default());
 
   let promise;
@@ -49,6 +52,7 @@ export async function findWithOffset(collection, params) {
       promise = (async () => {
         /** @type {object[]} */
         const results = await collection.find(query, {
+          ...additionalOptions,
           limit: limit + 1 + (offset ? 1 : 0),
           projection,
           sort: {
