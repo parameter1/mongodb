@@ -1,6 +1,6 @@
 {
   "name": "@parameter1/mongodb-dataloader",
-  "version": "1.1.2",
+  "version": "1.1.3",
   "type": "module",
   "description": "Dataloaders for MongoDB collections.",
   "author": "Jacob Bare <jacob@parameter1.com>",
@@ -25,7 +25,7 @@
     "win32"
   ],
   "dependencies": {
-    "@parameter1/mongodb-bson": "^1.0.0",
+    "@parameter1/mongodb-bson": "^1.0.1",
     "@parameter1/object-path": "^2.0.0",
     "@parameter1/utils": "^2.0.0",
     "dataloader": "^2.1.0",
