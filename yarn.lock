@@ -2228,6 +2228,13 @@ bson@^4.7.0:
   dependencies:
     buffer "^5.6.0"
 
+bson@^4.7.1:
+  version "4.7.1"
+  resolved "https://registry.yarnpkg.com/bson/-/bson-4.7.1.tgz#6bc4aa4ae5b4fbd1b03799b4fb3e0e4bdcfac38c"
+  integrity sha512-XkuFtlCzi0WSy8D6PMhvrQ/q8VlZHN/2bJ/shJglwuA6TPD2ZP/hHLB7iDxOEWVINHN/UVTxP4pqZqOKMXPIXg==
+  dependencies:
+    buffer "^5.6.0"
+
 buffer-from@^1.0.0:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/buffer-from/-/buffer-from-1.1.2.tgz#2b146a6fd72e80b4f55d255f35ed59a3a9a41bd5"

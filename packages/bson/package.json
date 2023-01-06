@@ -25,7 +25,7 @@
     "win32"
   ],
   "dependencies": {
-    "bson": "^4.7.0"
+    "bson": "^4.7.1"
   },
   "publishConfig": {
     "access": "public"
