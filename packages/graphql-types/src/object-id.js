@@ -7,6 +7,9 @@ const pattern = /^[0-9a-f]{24}$/i;
 const createError = (value) => new TypeError(`The provided value "${value}" is not a valid ObjectID.`);
 
 const createFromString = (value) => {
+  if (value && typeof value === 'object' && pattern.test(value)) {
+    return ObjectId.createFromHexString(`${value}`);
+  }
   if (typeof value !== 'string' || !pattern.test(value)) {
     throw createError(value);
   }
