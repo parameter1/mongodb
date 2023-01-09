@@ -1,6 +1,6 @@
 {
   "name": "@parameter1/mongodb-graphql-types",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "type": "module",
   "description": "MongoDB GraphQL scalar types.",
   "author": "Jacob Bare <jacob@parameter1.com>",
