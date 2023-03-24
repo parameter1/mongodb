@@ -1,6 +1,6 @@
 {
   "name": "@parameter1/mongodb-dataloader",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "type": "module",
   "description": "Dataloaders for MongoDB collections.",
   "author": "Jacob Bare <jacob@parameter1.com>",

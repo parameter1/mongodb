@@ -1,6 +1,6 @@
 {
   "name": "@parameter1/mongodb-prop-types",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "type": "module",
   "description": "Common MongoDB prop type validators using Joi.",
   "author": "Jacob Bare <jacob@parameter1.com>",
