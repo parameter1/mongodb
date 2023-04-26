@@ -27,7 +27,7 @@
   "dependencies": {
     "@parameter1/mongodb-bson": "^2.0.1",
     "@parameter1/mongodb-core": "^2.0.0",
-    "joi": "^17.9.1"
+    "joi": "^17.9.2"
   },
   "publishConfig": {
     "access": "public"
