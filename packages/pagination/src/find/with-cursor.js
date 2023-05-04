@@ -39,18 +39,32 @@ const prepareQueryOptions = ({
  * @returns {Promise<object>}
  */
 const executeQuery = async (collection, {
+  originalQuery,
   query,
   options,
   direction,
   limit,
 } = {}) => {
-  const results = await collection.find(query, options).toArray();
+  let results = await collection.find(query, options).toArray();
   if (direction === 'BEFORE') results.reverse();
   const hasMoreResults = results.length > limit;
-  // Remove the extra model that was queried to peek for the next/previous page.
+
+  // if direction is BEFORE and the results are less than the limit,
+  // re-query for results without a cursor using the original sort
+  const resetQuery = direction === 'BEFORE' && results.length < limit;
+
+  // Remove the extra document that was queried to peek for the next/previous page.
   const fnName = direction === 'BEFORE' ? 'shift' : 'pop';
   if (hasMoreResults) results[fnName]();
-  return { hasMoreResults, results };
+
+  if (resetQuery) {
+    results = await collection.find(originalQuery, {
+      limit: limit - 1, // don't need to peek in this situation
+      projection: options.projection,
+      sort: invertSort(options.sort), // restore original sort
+    }).toArray();
+  }
+  return { hasMoreResults, resetQuery, results };
 };
 
 const buildEdges = async ({ runQuery, formatEdgeFn, onLoadEdgesFn }) => {
@@ -124,6 +138,7 @@ export async function findWithCursor(collection, params) {
   const runQuery = () => {
     if (promise) return promise;
     promise = executeQuery(collection, {
+      originalQuery: query,
       query: paginationQuery,
       options: queryOptions,
       direction,
@@ -182,9 +197,9 @@ export async function findWithCursor(collection, params) {
         return firstNode ? PaginationCursor.encode(firstNode._id) : '';
       },
       startingPosition: async () => {
-        const { results } = await runQuery();
+        const { resetQuery, results } = await runQuery();
         const inc = results.length ? 1 : 0;
-        if (!cursor) return inc;
+        if (!cursor || resetQuery) return inc;
 
         const count = await getPositionCount();
         if (direction === 'AFTER') return count + inc;
@@ -196,8 +211,8 @@ export async function findWithCursor(collection, params) {
         return lastNode ? PaginationCursor.encode(lastNode._id) : '';
       },
       endingPosition: async () => {
-        const { results } = await runQuery();
-        if (!cursor) return results.length;
+        const { resetQuery, results } = await runQuery();
+        if (!cursor || resetQuery) return results.length;
 
         const count = await getPositionCount();
         if (direction === 'AFTER') return count + results.length;
