@@ -95,6 +95,10 @@ export async function findWithOffset(collection, params) {
         return hasPreviousResults;
       },
       startOffset: offset,
+      startingPosition: async () => {
+        const { results } = await runQuery();
+        return offset + results.length ? 1 : 0;
+      },
       endOffset: async () => {
         const { results } = await runQuery();
         return offset + results.length;
@@ -108,6 +112,10 @@ export async function findWithOffset(collection, params) {
         const { results } = await runQuery();
         const lastNode = results[results.length - 1];
         return lastNode ? PaginationCursor.encode(lastNode._id) : '';
+      },
+      endingPosition: async () => {
+        const { results } = await runQuery();
+        return offset + results.length;
       },
     },
   };

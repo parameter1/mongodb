@@ -146,6 +146,15 @@ export async function findWithCursor(collection, params) {
     return Boolean(doc);
   };
 
+  let positionPromise;
+  const getPositionCount = async () => {
+    const [search, replace] = sort.order === 1 ? [/"\$gt":/g, '"$lte":'] : [/"\$lt":/g, '"$gte":'];
+    const stringified = EJSON.stringify(cursorQuery).replace(search, replace);
+    const pageQuery = EJSON.parse(stringified);
+    if (!positionPromise) positionPromise = collection.countDocuments({ $and: [pageQuery, query] });
+    return positionPromise;
+  };
+
   return {
     // use the base query, not the cursor query, to count all docs
     totalCount: () => collection.countDocuments(query),
@@ -172,10 +181,27 @@ export async function findWithCursor(collection, params) {
         const [firstNode] = results;
         return firstNode ? PaginationCursor.encode(firstNode._id) : '';
       },
+      startingPosition: async () => {
+        const { results } = await runQuery();
+        const inc = results.length ? 1 : 0;
+        if (!cursor) return inc;
+
+        const count = await getPositionCount();
+        if (direction === 'AFTER') return count + inc;
+        return (count - results.length) + inc;
+      },
       endCursor: async () => {
         const { results } = await runQuery();
         const lastNode = results[results.length - 1];
         return lastNode ? PaginationCursor.encode(lastNode._id) : '';
+      },
+      endingPosition: async () => {
+        const { results } = await runQuery();
+        if (!cursor) return results.length;
+
+        const count = await getPositionCount();
+        if (direction === 'AFTER') return count + results.length;
+        return count;
       },
     },
   };
