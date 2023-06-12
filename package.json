@@ -5,7 +5,7 @@
   "repository": "https://github.com/parameter1/mongodb.git",
   "license": "MIT",
   "scripts": {
-    "check-updates": "npx npm-check-updates --workspaces --root --interactive",
+    "check-updates": "npm-check-updates --workspaces --root --interactive",
     "test": "lerna run test",
     "lint": "lerna run lint",
     "lerna": "lerna"
@@ -17,6 +17,7 @@
     "eslint": "^8.39.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.27.5",
-    "lerna": "^6.6.1"
+    "lerna": "^6.6.1",
+    "npm-check-updates": "^16.10.12"
   }
 }
