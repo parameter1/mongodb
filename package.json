@@ -17,7 +17,7 @@
     "eslint": "^8.42.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.27.5",
-    "lerna": "^6.6.2",
-    "npm-check-updates": "^16.10.12"
+    "lerna": "^7.1.5",
+    "npm-check-updates": "^16.10.18"
   }
 }
