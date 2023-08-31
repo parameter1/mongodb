@@ -33,7 +33,7 @@
     "object-hash": "^3.0.0"
   },
   "peerDependencies": {
-    "@parameter1/mongodb-core": "^2.0.0"
+    "@parameter1/mongodb-core": "^3.0.0"
   },
   "devDependencies": {
     "@parameter1/mongodb-core": "^3.0.0"
