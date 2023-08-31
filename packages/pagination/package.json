@@ -1,6 +1,6 @@
 {
   "name": "@parameter1/mongodb-pagination",
-  "version": "2.4.0",
+  "version": "3.0.0",
   "type": "module",
   "description": "Cursor, offset, and embedded object pagination for MongoDB queries.",
   "author": "Jacob Bare <jacob@parameter1.com>",
@@ -25,8 +25,8 @@
     "win32"
   ],
   "dependencies": {
-    "@parameter1/mongodb-bson": "^2.3.0",
-    "@parameter1/mongodb-prop-types": "^2.3.0",
+    "@parameter1/mongodb-bson": "^3.0.0",
+    "@parameter1/mongodb-prop-types": "^3.0.0",
     "@parameter1/object-path": "^2.0.0",
     "@parameter1/slug": "^2.2.0",
     "@parameter1/utils": "^2.0.0",
@@ -38,7 +38,7 @@
     "@parameter1/mongodb-core": "^2.0.0"
   },
   "devDependencies": {
-    "@parameter1/mongodb-core": "^2.3.0"
+    "@parameter1/mongodb-core": "^3.0.0"
   },
   "publishConfig": {
     "access": "public"
