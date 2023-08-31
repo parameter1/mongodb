@@ -9,6 +9,9 @@ x-node-defaults: &node
   image: node:18.13
   working_dir: /mongodb
   volumes:
+    - ~/.gitconfig:/etc/gitconfig
+    - ~/.ssh/id_rsa:/root/.ssh/id_rsa
+    - ~/.npmrc:/root/.npmrc
     - .:/mongodb:cached
     - ./node_modules:/mongodb/node_modules:delegated
     - yarn-cache:/.yarn-cache
