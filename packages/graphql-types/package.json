@@ -1,6 +1,6 @@
 {
   "name": "@parameter1/mongodb-graphql-types",
-  "version": "3.1.0",
+  "version": "3.2.0",
   "type": "module",
   "description": "MongoDB GraphQL scalar types.",
   "author": "Jacob Bare <jacob@parameter1.com>",
@@ -25,7 +25,7 @@
     "win32"
   ],
   "dependencies": {
-    "@parameter1/mongodb-bson": "^3.1.0"
+    "@parameter1/mongodb-bson": "^3.2.0"
   },
   "peerDependencies": {
     "graphql": "^15.0.0 || ^16.0.0"
