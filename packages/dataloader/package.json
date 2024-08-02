@@ -1,6 +1,6 @@
 {
   "name": "@parameter1/mongodb-dataloader",
-  "version": "3.2.0",
+  "version": "3.3.0",
   "type": "module",
   "description": "Dataloaders for MongoDB collections.",
   "author": "Jacob Bare <jacob@parameter1.com>",
@@ -25,7 +25,7 @@
     "win32"
   ],
   "dependencies": {
-    "@parameter1/mongodb-bson": "^3.2.0",
+    "@parameter1/mongodb-bson": "^3.3.0",
     "@parameter1/object-path": "^2.0.0",
     "@parameter1/utils": "^2.0.0",
     "dataloader": "^2.2.2",
@@ -36,7 +36,7 @@
     "@parameter1/mongodb-core": "^3.0.0"
   },
   "devDependencies": {
-    "@parameter1/mongodb-core": "^3.2.0"
+    "@parameter1/mongodb-core": "^3.3.0"
   },
   "publishConfig": {
     "access": "public"
