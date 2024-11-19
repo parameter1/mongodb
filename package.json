@@ -14,10 +14,10 @@
     "packages/*"
   ],
   "devDependencies": {
-    "eslint": "^8.57.0",
+    "eslint": "^8.57.1",
     "eslint-config-airbnb-base": "^15.0.0",
-    "eslint-plugin-import": "^2.29.1",
-    "lerna": "^8.1.7",
-    "npm-check-updates": "^16.14.20"
+    "eslint-plugin-import": "^2.31.0",
+    "lerna": "^8.1.9",
+    "npm-check-updates": "^17.1.11"
   }
 }
