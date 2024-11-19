@@ -1,0 +1,22 @@
+{
+  "name": "@parameter1/mongodb-aggregation",
+  "version": "0.0.0",
+  "type": "module",
+  "description": "MongoDB aggregation pipeline and operation helpers.",
+  "author": "Jacob Bare <jacob@parameter1.com>",
+  "homepage": "https://github.com/parameter1/mongodb/tree/main/packages/aggregation#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/parameter1/mongodb.git",
+    "directory": "packages/aggregation"
+  },
+  "license": "MIT",
+  "main": "./src/index.js",
+  "scripts": {
+    "lint": "eslint --ext .js ./",
+    "test": "yarn lint"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
