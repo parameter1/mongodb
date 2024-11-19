@@ -1,12 +1,10 @@
-version: '3.7'
-
 x-env-defaults: &env
   YARN_CACHE_FOLDER: /.yarn-cache
 
 x-node-defaults: &node
   tty: true
   init: true
-  image: node:18.13
+  image: node:20.18
   working_dir: /mongodb
   volumes:
     - ~/.gitconfig:/etc/gitconfig
