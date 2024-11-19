@@ -1,6 +1,6 @@
 {
   "name": "@parameter1/mongodb-bson",
-  "version": "3.3.0",
+  "version": "3.4.0",
   "type": "module",
   "description": "A BSON wrapper containing common utilities.",
   "author": "Jacob Bare <jacob@parameter1.com>",
