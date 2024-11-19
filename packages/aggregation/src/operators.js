@@ -766,6 +766,48 @@ export class AggregationOperators {
   }
 
   /**
+   * Returns a subset of an array.
+   *
+   * {@link https://www.mongodb.com/docs/manual/reference/operator/aggregation/slice/#mongodb-expression-exp.-slice `$slice`}
+   * has one of two syntax forms:
+   *
+   * The following syntax returns elements from either the start or end of the array:
+   * ```js
+   * $slice( <array>, <n> )
+   * ```
+   *
+   * The following syntax returns elements from the specified position in the array:
+   * ```js
+   * $slice( <array>, <position>, <n> )
+   * ```
+   *
+   * @param {Expression<Array>} array Any valid expression as long as it resolves to an array.
+   * @param {Expression<number>} [position] Optional. Any valid expression as long as it resolves to
+   * an integer.
+   *
+   * - If positive, `$slice` determines the starting position from the start of the array. If
+   * `<position>` is greater than the number of elements, the `$slice` returns an empty array.
+   *
+   * - If negative, `$slice` determines the starting position from the end of the array. If the
+   * absolute value of the `<position>` is greater than the number of elements, the starting
+   * position is the start of the array.
+   * @param {Expression<number>} n Any valid expression as long as it resolves to an integer. If
+   * `<position>` is specified, `<n>` must resolve to a positive integer.
+   *
+   * - If positive, `$slice` returns up to the first n elements in the array. If the `<position>` is
+   * specified, `$slice` returns the first n elements starting from the position.
+   *
+   * - If negative, `$slice` returns up to the last `n` elements in the array. `n` cannot resolve to
+   * a negative number _if_ `<position>` is specified.
+   *
+   */
+  static $slice(array, position, n) {
+    const parts = [array, position];
+    if (n != null) parts.push(n);
+    return { $slice: parts };
+  }
+
+  /**
    * @param {Expression<any[]>} expression The argument for $size can be any expression as
    * long as it resolves to an array. If the argument for $size is missing or does not
    * resolve to an array, $size errors.
