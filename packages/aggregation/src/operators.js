@@ -399,6 +399,24 @@ export class AggregationOperators {
     return { $isArray: [expression] };
   }
 
+  /**
+   * `$isNumber` checks if the specified expression resolves to one of the following numeric BSON
+   * types:
+   * - Integer
+   * - Decimal
+   * - Double
+   * - Long
+   *
+   * `$isNumber` returns:
+   * - `true` if the expression resolves to a number.
+   * - `false` if the expression resolves to any other BSON type, `null`, or a missing field.
+   *
+   * @param {Expression<any>} expression
+   */
+  static $isNumber(expression) {
+    return { $isNumber: [expression] };
+  }
+
   static $last(expression) {
     return { $last: expression };
   }
