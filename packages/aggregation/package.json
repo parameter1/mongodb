@@ -1,6 +1,6 @@
 {
   "name": "@parameter1/mongodb-aggregation",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "type": "module",
   "description": "MongoDB aggregation pipeline and operation helpers.",
   "author": "Jacob Bare <jacob@parameter1.com>",
