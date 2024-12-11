@@ -744,6 +744,32 @@ export class AggregationOperators {
   }
 
   /**
+   * `$round` rounds a number to a whole integer or to a specified decimal place.
+   *
+   * @param {Expression<number>} number Can be any valid expression that resolves to a number.
+   * Specifically, the expression must resolve to an integer, double, `decimal`, or `long`.
+   *
+   * `$round` returns an error if the expression resolves to a non-numeric data type.
+   * @param {Expression<number>} place _Optional_ Can be any valid expression that resolves to an
+   * integer between -20 and 100, exclusive. e.g. `-20 < place < 100`. Defaults to `0` if\
+   * unspecified.
+   *
+   * - If `<place>` resolves to a positive integer, $round rounds to `<place>` decimal places. For
+   * example, `$round : [1234.5678, 2]` rounds to two decimal places and returns 1234.57.
+   * - If `<place>` resolves to a negative integer, $round rounds using the digit `<place>` to the
+   * left of the decimal. For example, `$round : [1234.5678, -2]` uses the 2nd digit to the left of
+   * the decimal (3) and returns 1200.
+   * - If the absolute value of `<place>` equals or exceeds the number of digits to the left of the
+   * decimal, $round returns 0. For example, `$round : [ 1234.5678, -4]` specifies the fourth digit
+   * to the left of the decimal. This equals the number of digits left of the decimal and returns 0.
+   * - If `<place>` resolves to 0, $round rounds using the first digit to the right of the decimal
+   * and returns rounded integer value. For example, $round : [1234.5678, 0] returns 1235.
+   */
+  static $round(number, place) {
+    return { $round: [number, place] };
+  }
+
+  /**
    * Takes two or more arrays and returns an array containing the elements that appear
    * in all input arrays.
    *
