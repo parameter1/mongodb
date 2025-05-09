@@ -28,7 +28,7 @@
     "@parameter1/mongodb-bson": "^3.4.0",
     "@parameter1/object-path": "^2.0.0",
     "@parameter1/utils": "^2.0.0",
-    "dataloader": "^2.2.2",
+    "dataloader": "^2.2.3",
     "escape-string-regexp": "^5.0.0",
     "object-hash": "^3.0.0"
   },
