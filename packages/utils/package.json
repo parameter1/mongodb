@@ -1,0 +1,33 @@
+{
+  "name": "@parameter1/mongodb-utils",
+  "version": "3.4.0",
+  "type": "module",
+  "description": "ObjectID and other utils for MongoDB",
+  "author": "Jacob Bare <jacob@parameter1.com>",
+  "homepage": "https://github.com/parameter1/mongodb/tree/main/packages/utils#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/parameter1/mongodb.git",
+    "directory": "packages/utils"
+  },
+  "license": "MIT",
+  "main": "./src/index.js",
+  "scripts": {
+    "lint": "eslint --ext .js ./",
+    "test": "yarn lint"
+  },
+  "engines": {
+    "node": ">=14.20.1"
+  },
+  "os": [
+    "darwin",
+    "linux",
+    "win32"
+  ],
+  "dependencies": {
+    "@parameter1/mongodb-bson": "^3.4.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
